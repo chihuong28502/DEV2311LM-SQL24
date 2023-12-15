@@ -57,5 +57,22 @@
 
 	select * from SinhVien
 	where NoiSinh = 'Hà Nội'
+--24
 
+	select * from SinhVien
+	where Phai = 0 and NgaySinh > '05/30/1986'
+--25
+	select HoSV +' ' + TenSV as [Họ và Tên],iif(Phai = 0,N'Nam',N'Nữ'),NgaySinh
+	from SinhVien
+--26
+	select HoSV +' ' + TenSV as [Họ và Tên],NgaySinh,year(getdate())- year(NgaySinh) as [Tuổi]
+	from SinhVien
+--27
+	select HoSV +' ' + TenSV as [Họ và Tên],year(getdate())- year(NgaySinh) as [Tuổi] , HocBong
+	from SinhVien
+	where year(getdate())- year(NgaySinh) > 20
+--28
+	select HoSV +' ' + TenSV as [Họ và Tên],year(getdate())- year(NgaySinh) as [Tuổi],K.TenKH,S.MaKH
+	from Khoa as K join SinhVien as S on  S.MaKH = K.MaKH
+	where year(getdate())- year(NgaySinh) > 20 and year(getdate())- year(NgaySinh) < 30 
 	
